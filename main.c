@@ -6,7 +6,7 @@
 /*   By: aalhalab <aalhalab@student.42heilbronn.de> +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/08 20:14:59 by aalhalab          #+#    #+#             */
-/*   Updated: 2024/02/11 21:25:43 by aalhalab         ###   ########.fr       */
+/*   Updated: 2024/02/13 20:21:59 by aalhalab         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,17 +16,17 @@
 int	main()
 {
 	int	fd;
-	fd = open("tests.txt", O_RDONLY);
+	fd = open("tests", O_RDONLY);
 	char *line;
+	printf("buffer = %d\n", BUFFER_SIZE);
+	while (1)
+	{
+		line = get_next_line(fd);
+		if (line == NULL)
+			break;
+		printf("----------\n");
+		printf("%s", line);
+	}
 	
-	
-	printf("%s", line = get_next_line(fd));
-	printf("%s", line = get_next_line(fd));
-	printf("%s", line = get_next_line(fd));
-	printf("%s", line = get_next_line(fd));
-	printf("%s", line = get_next_line(fd));
-	printf("%s", line = get_next_line(fd));
-	printf("%s", line = get_next_line(fd));
-	printf("%s", line = get_next_line(fd));
-	printf("%s", line = get_next_line(fd));
 }
+//char b[c];

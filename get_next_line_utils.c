@@ -6,7 +6,7 @@
 /*   By: aalhalab <aalhalab@student.42heilbronn.de> +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/08 20:13:07 by aalhalab          #+#    #+#             */
-/*   Updated: 2024/02/13 23:56:21 by aalhalab         ###   ########.fr       */
+/*   Updated: 2024/02/16 19:49:08 by aalhalab         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,10 +17,10 @@ int	ft_strlen(const char *c)
 	int	i;
 
 	i = 0;
+	if (!c)
+		return (0);
 	while (c[i])
-	{
 		i++;
-	}
 	return (i);
 }
 
@@ -33,6 +33,8 @@ char	*ft_strjoin(char const *s1, char const *s2)
 	size_t	i;
 
 	i = 0;
+	if (!s1 && !s2)
+		return (NULL);
 	len1 = ft_strlen(s1);
 	len2 = ft_strlen(s2);
 	result = malloc((len1 + len2 + 1) * sizeof(char));
@@ -53,37 +55,15 @@ char	*ft_strjoin(char const *s1, char const *s2)
 	return (result);
 }
 
-void	*ft_memcpy(void *dst, const void *src, size_t n)
-{
-	char		*d;
-	const char	*s;
-	size_t		i;
 
-	d = (char *)dst;
-	s = (const char *)src;
+void	ft_bzero(char *c, int n)
+{
+	int	i;
+
 	i = 0;
-	if (!dst && !src)
-		return (NULL);
 	while (i < n)
 	{
-		d[i] = s[i];
+		c[i] = '\0';
 		i++;
 	}
-	return (dst);
-}
-
-char	*ft_strdup(const char *s1)
-{
-	char	*buffer;
-	size_t	n;
-
-	n = ft_strlen(s1) + 1;
-	buffer = malloc(n);
-	if (buffer)
-	{
-		ft_memcpy(buffer, s1, n - 1);
-		buffer[n - 1] = '\0';
-		return (buffer);
-	}
-	return (NULL);
 }

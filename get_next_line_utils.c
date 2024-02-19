@@ -6,7 +6,7 @@
 /*   By: aalhalab <aalhalab@student.42heilbronn.de> +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/08 20:13:07 by aalhalab          #+#    #+#             */
-/*   Updated: 2024/02/19 01:14:19 by aalhalab         ###   ########.fr       */
+/*   Updated: 2024/02/19 20:03:09 by aalhalab         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,7 +25,6 @@ int	ft_strlen(const char *c)
 }
 
 char	*ft_strjoin(char *s1, char const *s2)
-
 {
 	char	*result;
 	size_t	len1;
@@ -46,20 +45,12 @@ char	*ft_strjoin(char *s1, char const *s2)
 		i++;
 	}
 	while (i < len2 + len1)
-	{
-		result[i] = *s2;
-		i++;
-		s2++;
-	}
+		result[i++] = *s2++;
 	result[i] = '\0';
 	if (s1)
-	{
-		free(s1);
-		s1 = NULL;
-	}
+		return (free(s1), s1 = NULL, result);
 	return (result);
 }
-
 
 void	ft_bzero(char *c, int n)
 {

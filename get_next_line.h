@@ -6,7 +6,7 @@
 /*   By: aalhalab <aalhalab@student.42heilbronn.de> +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/08 20:09:31 by aalhalab          #+#    #+#             */
-/*   Updated: 2024/02/16 20:03:12 by aalhalab         ###   ########.fr       */
+/*   Updated: 2024/02/19 01:14:44 by aalhalab         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,7 @@
 #include <string.h>
 
 char	*get_next_line(int fd);
-char	*ft_strjoin(char const *s1, char const *s2);
+char	*ft_strjoin(char *s1, char const *s2);
 int	ft_strlen(const char *c);
 void	ft_bzero(char *c, int n);
 

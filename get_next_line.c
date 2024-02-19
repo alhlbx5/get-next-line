@@ -6,7 +6,7 @@
 /*   By: aalhalab <aalhalab@student.42heilbronn.de> +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/08 20:12:29 by aalhalab          #+#    #+#             */
-/*   Updated: 2024/02/16 19:59:57 by aalhalab         ###   ########.fr       */
+/*   Updated: 2024/02/19 01:15:38 by aalhalab         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,7 +44,8 @@ char	*read_line(int	fd,	char	*buffer)
 	{
 		if (read(fd, buffer, BUFFER_SIZE) == 0)
 		{
-			line = NULL;
+			if(line[0] == '\0')
+				line = NULL;
 			break;
 		}
 		buffer[BUFFER_SIZE] = '\0';

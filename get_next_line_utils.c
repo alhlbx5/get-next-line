@@ -6,7 +6,7 @@
 /*   By: aalhalab <aalhalab@student.42heilbronn.de> +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/08 20:13:07 by aalhalab          #+#    #+#             */
-/*   Updated: 2024/02/16 19:49:08 by aalhalab         ###   ########.fr       */
+/*   Updated: 2024/02/19 01:14:19 by aalhalab         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,7 @@ int	ft_strlen(const char *c)
 	return (i);
 }
 
-char	*ft_strjoin(char const *s1, char const *s2)
+char	*ft_strjoin(char *s1, char const *s2)
 
 {
 	char	*result;
@@ -52,6 +52,11 @@ char	*ft_strjoin(char const *s1, char const *s2)
 		s2++;
 	}
 	result[i] = '\0';
+	if (s1)
+	{
+		free(s1);
+		s1 = NULL;
+	}
 	return (result);
 }
 

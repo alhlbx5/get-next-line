@@ -1,16 +1,16 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   get_next_line.c                                    :+:      :+:    :+:   */
+/*   get_next_line_bonus.c                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: aalhalab <aalhalab@student.42heilbronn.de> +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/02/08 20:12:29 by aalhalab          #+#    #+#             */
-/*   Updated: 2024/02/20 11:52:04 by aalhalab         ###   ########.fr       */
+/*   Created: 2024/02/20 11:50:03 by aalhalab          #+#    #+#             */
+/*   Updated: 2024/02/20 12:10:05 by aalhalab         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "get_next_line.h"
+#include "get_next_line_bonus.h"
 
 int	find_new_line(char	*c)
 {
@@ -56,18 +56,18 @@ char	*read_line(int fd, char *buffer)
 char	*get_next_line(int fd)
 {
 	int				vars[3];
-	static char		buffer[BUFFER_SIZE + 1];
+	static char		buffer[1024][BUFFER_SIZE + 1];
 	char			*line;
 
 	vars[0] = 0;
 	vars[1] = 0;
 	if (fd < 0 || BUFFER_SIZE < 1 || read(fd, buffer, 0) < 0)
 	{
-		ft_bzero(buffer, BUFFER_SIZE + 1);
+		ft_bzero(buffer[fd], BUFFER_SIZE + 1);
 		return (NULL);
 	}
-	line = read_line(fd, buffer);
-	ft_bzero(buffer, BUFFER_SIZE + 1);
+	line = read_line(fd, buffer[fd]);
+	ft_bzero(buffer[fd], BUFFER_SIZE + 1);
 	if (find_new_line(line) == 1)
 	{
 		while (line && line[vars[0]] != '\n')
@@ -75,7 +75,7 @@ char	*get_next_line(int fd)
 		vars[0]++;
 		vars[2] = vars[0];
 		while (line && line[vars[0]])
-			buffer[vars[1]++] = line[vars[0]++];
+			buffer[fd][vars[1]++] = line[vars[0]++];
 		while (line && line[vars[2]])
 			line[vars[2]++] = '\0';
 	}

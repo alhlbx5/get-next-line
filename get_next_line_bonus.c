@@ -6,7 +6,7 @@
 /*   By: aalhalab <aalhalab@student.42heilbronn.de> +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/20 11:50:03 by aalhalab          #+#    #+#             */
-/*   Updated: 2024/02/20 12:10:05 by aalhalab         ###   ########.fr       */
+/*   Updated: 2024/02/20 21:02:12 by aalhalab         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,16 +56,15 @@ char	*read_line(int fd, char *buffer)
 char	*get_next_line(int fd)
 {
 	int				vars[3];
-	static char		buffer[1024][BUFFER_SIZE + 1];
+	static char		buffer[4096][BUFFER_SIZE + 1];
 	char			*line;
 
 	vars[0] = 0;
 	vars[1] = 0;
-	if (fd < 0 || BUFFER_SIZE < 1 || read(fd, buffer, 0) < 0)
-	{
-		ft_bzero(buffer[fd], BUFFER_SIZE + 1);
+	if (fd < 0 || fd > 4095)
 		return (NULL);
-	}
+	if (BUFFER_SIZE < 1 || read(fd, buffer, 0) < 0)
+		return (ft_bzero(buffer[fd], BUFFER_SIZE + 1));
 	line = read_line(fd, buffer[fd]);
 	ft_bzero(buffer[fd], BUFFER_SIZE + 1);
 	if (find_new_line(line) == 1)

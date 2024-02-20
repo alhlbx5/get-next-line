@@ -6,7 +6,7 @@
 /*   By: aalhalab <aalhalab@student.42heilbronn.de> +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/20 11:50:11 by aalhalab          #+#    #+#             */
-/*   Updated: 2024/02/20 12:09:56 by aalhalab         ###   ########.fr       */
+/*   Updated: 2024/02/20 21:01:38 by aalhalab         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,7 +52,7 @@ char	*ft_strjoin(char *s1, char const *s2)
 	return (result);
 }
 
-void	ft_bzero(char *c, int n)
+char	*ft_bzero(char *c, int n)
 {
 	int	i;
 
@@ -62,4 +62,5 @@ void	ft_bzero(char *c, int n)
 		c[i] = '\0';
 		i++;
 	}
+	return (0);
 }
